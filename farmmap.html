@@ -37,10 +37,12 @@
       var map;
       //var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
       var src = settings.KMLUrl;
+      // from https://stackoverflow.com/questions/7930660/google-maps-api-v3-kml-layer-changes
+      src = src + "?cachebuster=" + (new Date()).getTime();
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(-19.257753, 146.823688),
+          center: new google.maps.LatLng(-122.0922532985281,37.42301710721216),
           zoom: 2,
           mapTypeId: 'terrain'
         });
@@ -56,6 +58,30 @@
           testimonial.innerHTML = content;
         });
       }
+
+    </script>
+    <script>
+        // from https://stackoverflow.com/questions/27522979/read-a-local-text-file-using-javascript
+        var fileDisplayArea = document.getElementById('fileDisplayArea');
+        function readTextFile(file)
+        {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                        fileDisplayArea.innerText = allText 
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+
+        //console.log( readTextFile(src) );
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCssR8inpq24nARHj_AlLlwtQbmH9HMh3U&callback=initMap">

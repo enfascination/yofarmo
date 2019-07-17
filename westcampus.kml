@@ -13,51 +13,18 @@
         <text>$[video]</text>
       </BalloonStyle>
     </Style>
-    <!--from https://stackoverflow.com/questions/2199991/how-do-you-create-a-polygon-shape-in-a-kml-that-is-positioned-in-the-air-->
-    <Style id="poly">
-        <LineStyle>
-            <color>f0ffed42</color>
-        </LineStyle>
-      <BalloonStyle>
-        <text>$[video]</text>
-      </BalloonStyle>
-    </Style>
     <Placemark>
       <name>Google West Campus 1</name>
-      <description>this will show up when clicked</description>
-      <visibility>1</visibility>
-      <styleUrl>#poly</styleUrl>
-      <ExtendedData>
-        <Data name="video">
-          <value><![CDATA[<iframe width="480" height="360"
-            frameborder="0"
-            allowfullscreen>hello, I am content</iframe><br><br>]]></value>
-        </Data>
-      </ExtendedData>
-      <Polygon>
-        <outerBoundaryIs>
-          <LinearRing>
-            <coordinates>-122.0915,37.4239,0
-            -122.0916,37.4239,0
-            -122.0916,37.4240,0
-            -122.0915,37.4240,0
-            -122.0915,37.4239,0</coordinates>
-          </LinearRing>
-        </outerBoundaryIs>
-      </Polygon>
-    </Placemark>
-    <Placemark>
-      <name>Google West Campus 2</name>
       <styleUrl>#west_campus_style</styleUrl>
       <ExtendedData>
         <Data name="video">
           <value><![CDATA[<iframe width="480" height="360"
-            src="https://www.youtube.com/embed/nb4gvrNrDWw" frameborder="0"
+            src="https://www.youtube.com/embed/ZE8ODPL2VPI" frameborder="0"
             allowfullscreen></iframe><br><br>]]></value>
         </Data>
       </ExtendedData>
       <Point>
-        <coordinates>-122.0926995893311,37.42419403634421,0</coordinates>
+        <coordinates>-122.0914977709329,37.42390182131783,0</coordinates>
       </Point>
     </Placemark>
     <Placemark>
