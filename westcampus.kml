@@ -13,9 +13,18 @@
         <text>$[video]</text>
       </BalloonStyle>
     </Style>
+    <!--from https://stackoverflow.com/questions/2199991/how-do-you-create-a-polygon-shape-in-a-kml-that-is-positioned-in-the-air-->
+    <Style id="poly">
+        <LineStyle>
+            <color>f0ffed42</color>
+        </LineStyle>
+        <PolyStyle>
+            <color>e8ff9257</color>
+        </PolyStyle>
+    </Style>
     <Placemark>
       <name>Google West Campus 1</name>
-      <styleUrl>#west_campus_style</styleUrl>
+      <styleUrl>#poly</styleUrl>
       <ExtendedData>
         <Data name="video">
           <value><![CDATA[<iframe width="480" height="360"
