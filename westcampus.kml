@@ -31,11 +31,11 @@
       <Polygon>
         <outerBoundaryIs>
           <LinearRing>
-            <coordinates>-19.2578,146.8236,0
-            -19.2577,146.8236,0
-            -19.2577,146.8235,0
-            -19.2578,146.8235,0
-            -19.2578,146.8236,0</coordinates>
+            <coordinates>-19.258,146.823,0
+            -19.257,146.823,0
+            -19.257,146.822,0
+            -19.258,146.822,0
+            -19.258,146.823,0</coordinates>
           </LinearRing>
         </outerBoundaryIs>
       </Polygon>
@@ -46,11 +46,11 @@
       <Polygon>
         <outerBoundaryIs>
           <LinearRing>
-            <coordinates>-122.0915,37.4239,0
-            -122.0916,37.4239,0
-            -122.0916,37.4240,0
-            -122.0915,37.4240,0
-            -122.0915,37.4239,0</coordinates>
+            <coordinates>-122.092,37.425,0
+            -122.093,37.425,0
+            -122.093,37.424,0
+            -122.092,37.424,0
+            -122.092,37.425,0</coordinates>
           </LinearRing>
         </outerBoundaryIs>
       </Polygon>
