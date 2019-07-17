@@ -26,6 +26,21 @@
       </BalloonStyle>
     </Style>
     <Placemark>
+      <name>Sample 2</name>
+      <styleUrl>#poly</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>-19.2578,146.8236,0
+            -19.2577,146.8236,0
+            -19.2577,146.8235,0
+            -19.2578,146.8235,0
+            -19.2578,146.8236,0</coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
       <name>Sample</name>
       <styleUrl>#poly</styleUrl>
       <Polygon>
