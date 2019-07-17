@@ -21,7 +21,25 @@
         <PolyStyle>
             <color>e8ff9257</color>
         </PolyStyle>
+      <BalloonStyle>
+        <text>HIIII</text>
+      </BalloonStyle>
     </Style>
+    <Placemark>
+      <name>Sample</name>
+      <styleUrl>#poly</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>-122.0915,37.4239,0
+            -122.0916,37.4239,0
+            -122.0916,37.4240,0
+            -122.0915,37.4240,0
+            -122.0915,37.4239,0</coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
     <Placemark>
       <name>Google West Campus 1</name>
       <styleUrl>#poly</styleUrl>
