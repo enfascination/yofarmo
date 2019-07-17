@@ -32,9 +32,12 @@
   <body>
     <div id="map"></div>
     <div id="capture"></div>
+    <script src="localSettings.js"></script>
     <script>
+        console.log(settings);
       var map;
-      var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
+      //var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
+      var src = settings.KMLUrl;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {

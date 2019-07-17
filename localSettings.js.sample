@@ -1,0 +1,3 @@
+var settings = {
+    "KMLUrl" : "https://raw.githubusercontent.com/enfascination/yofarmo/master/westcampus.kml"
+};
