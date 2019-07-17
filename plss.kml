@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<NetworkLink>
+	 <name>Public Land Survey System</name>
+	 <open>1</open>
+   <Style>
+      <BalloonStyle>
+         <text><![CDATA[
+         <head><link href="http://www.metzgerwillard.us/css/mainBalloon.css" rel="stylesheet" type="text/css"></head>
+         <body class="page">
+         <div id="header" class="header" style="background-image:url(http://www.metzgerwillard.us/plss/images/plss.png);"></div>
+         <script>year = new Date().getFullYear();
+           var title = "\xA9\xA0" + year +
+           "\xA0Google\xA0\u2013\xA0Image\xA0Landsat\xA0/\xA0Copernicus";
+           document.getElementById("header").title = title;
+         </script>
+
+         <h2>PLSS in Google Earth (PLSGE)</h2>
+
+      The principal component of PLSGE is a Google Earth implementation of the
+      Public Land Survey System (<a target="_blank"
+      href="http://nationalmap.gov/small_scale/a_plss.html">PLSS</a>)
+      Cadastral National Spatial Data Infrastructure (<a target="_blank"
+      href="https://nationalcad.org/download/PublicationHandbookOct2016.pdf">PLSS CadNSDI</a>)
+      <a target="_blank"
+      href="https://gis.blm.gov/arcgis/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer/">map
+      service</a>.
+      It retrieves multiresolution images of the PLSS from the
+      Bureau of Land Management (<a target="_blank" href="https://www.blm.gov/">BLM</a>) .
+      <ol><li>
+         Position the area of interest (AOI) in the viewer.
+         </li><li>
+         Check the radio button beside the <i>Alaska SDMS</i>, <i>Townships</i>,
+         or <i>Special Surveys</i> network link. Use the <i>Townships</i> overlay to find
+         townships and sections. Use the <i>Special Surveys</i> overlay to find other divisions.
+         </li><li>
+         On subsequent uses, reposition the AOI and ensure that the network link
+         is checked and selected.
+         When <i>Refresh Mode</i> is <i>Automatic</i>, the
+         overlay is refreshed two seconds after camera movement stops.
+         When <i>Refresh Mode</i> is <i>Manual</i>, choose <i>Refresh</i>
+         from the <i>Edit</i> menu, or right-click
+         and select <i>Refresh</i> in the context menu
+         (<a href="/RefreshNetworkLink.html">explain</a>).
+      </li></ol>
+      Coverage includes Alabama, Alaska, Arizona, Arkansas, California, Colorado, Florida, Idaho,
+      Illinois, Indiana, Iowa, Kansas, Louisiana, Michigan, Minnesota, Mississippi, Missouri,
+      Montana, Nebraska, Nevada, New Mexico, North Dakota, Ohio, Oklahoma, Oregon, South Dakota,
+      Utah, Washington, Wisconsin, and Wyoming.
+      <p>
+      PLSGE also includes protracted townships provided by the Alaska Spatial Data Management System
+      (<a target="_blank"
+      href="https://sdms.ak.blm.gov/sdms/index.html">SDMS</a>) and a facility
+      to draw approximate PLSS boundaries with links to BLM <a target="_blank"
+      href="https://www.glorecords.blm.gov/">land records</a>.
+      <p>
+      All images and data are retrieved from remote servers. Data errors,
+      accuracy, and availability are beyond the control of this application.
+      <p>
+      <a href="http://www.metzgerwillard.us/plss/">PLSGE</a> is a component of
+      <a href="http://www.metzgerwillard.us/">Earth Survey</a> &copy; 2007-<script>document.write(year);</script>
+      <a href="http://www.metzgerwillard.com/">Metzger + Willard, Inc.</a>
+      <div class="footer">Copyright &copy; <script>document.write(year);</script>&nbsp; MWI</div>
+      </body>]]></text>
+         <textColor>ff000000</textColor>
+         <displayMode>default</displayMode>
+      </BalloonStyle>
+   </Style>
+   <refreshVisibility>1</refreshVisibility>
+	<Link>
+		<href>http://www.metzgerwillard.us/plss/plssnl.kml</href>
+	</Link>
+</NetworkLink>
+</kml>
+
+
