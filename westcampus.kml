@@ -27,6 +27,8 @@
     </Style>
     <Placemark>
       <name>Sample 2</name>
+      <description>this will show up when clicked</description>
+      <visibility>1</visibility>
       <styleUrl>#poly</styleUrl>
       <Polygon>
         <outerBoundaryIs>
@@ -42,6 +44,8 @@
     </Placemark>
     <Placemark>
       <name>Sample</name>
+      <description>this will show up when clicked</description>
+      <visibility>1</visibility>
       <styleUrl>#poly</styleUrl>
       <Polygon>
         <outerBoundaryIs>
@@ -57,6 +61,8 @@
     </Placemark>
     <Placemark>
       <name>Google West Campus 1</name>
+      <description>this will show up when clicked</description>
+      <visibility>1</visibility>
       <styleUrl>#poly</styleUrl>
       <ExtendedData>
         <Data name="video">
