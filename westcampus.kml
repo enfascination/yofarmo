@@ -23,9 +23,17 @@
             allowfullscreen>hello, I am content</iframe><br><br>]]></value>
         </Data>
       </ExtendedData>
-      <Point>
-        <coordinates>-122.0914977709329,37.42390182131783,0</coordinates>
-      </Point>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>-122.0914977709329,37.42390182131783,0
+            -122.0914977709700,37.42390182131783,0
+            -122.0914977709700,37.42390182131300,0
+            -122.0914977709329,37.42390182131300,0
+            -122.0914977709329,37.42390182131783,0</coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
     </Placemark>
     <Placemark>
       <name>Google West Campus 2</name>
