@@ -3,9 +3,12 @@ getrawtractdata:
 	# other states http://nationalcad.org/download/PLSS-CadNSDI-Data-Set-Availability.pdf
 	cd data
 	wget https://navigator.blm.gov/api/share/ae0092d194729cca
+	mv ae0092d194729cca CadRef_v10.zip
 	cd ..
 
 getrawcountydata:
+	# get PERM and PUR from https://www.yolocounty.org/general-government/general-government-departments/agriculture-cooperative-extension/agriculture-and-weights-measures/pesticide-use-report-history
+	# PERM for commodities and PUR for pesticides.
 	echo "todo"
 	
 prep:
@@ -35,6 +38,3 @@ produce:
 	rm -rf tmp
 	echo "-----------------------------------------------------------------------"
 	zip data/countyDisplay.kmz data/countyDisplay.kml
-
-publish:
-	scp data/countyDisplay.kmz sethfrey@enfascination.com:~/webapps/htdocs/yofarmoplss.kmz
