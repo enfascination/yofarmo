@@ -35,15 +35,16 @@
     <script src="localSettings.js"></script>
     <script>
       var map;
+	  var s = localSettings;
       //var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
-      var src = settings.KMLUrlPlss;
+      var src = s.KMLUrlPlss;
       // from https://stackoverflow.com/questions/7930660/google-maps-api-v3-kml-layer-changes
       src = src + "?cachebuster=" + (new Date()).getTime();
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           mapTypeId: 'terrain',
-          center: new google.maps.LatLng(38.56, -121.75),
+          center: new google.maps.LatLng( s.lat, s.lon ),
           zoom: 12,
         });
 

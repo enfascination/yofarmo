@@ -1,3 +1,5 @@
-var settings = {
-    "KMLUrl" : "https://raw.githubusercontent.com/enfascination/yofarmo/master/westcampus.kml"
+var localSettings = {
+    "KMLUrlPlss" : "https://example.com/yofarmo.kmz",
+    "lat" : 38.56,
+    "lon" : -121.75,
 };
