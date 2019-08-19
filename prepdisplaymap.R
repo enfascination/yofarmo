@@ -35,6 +35,21 @@ as.data.frame( subset(agreporting, startsWith( FRSTDIVID_, "CA210080N0020E0SN08"
 
 plot(basetracts[1])
 
+### merge agricultural commodity data into basetract thorugh the description field, which gets proceessed correctly in conversion to KML for use by Google Maps.
+for (i in 1:nrow(basetracts)) {
+    commodities = asdf( subset(agreporting, FRSTDIVID_ == basetracts[i,]$FRSTDIVID ) )[,"Commodity"]
+    commodities = unique( commodities )
+    desc = ""
+    if (length(commodities) > 0) {
+        for (j in 1:length(commodities)) {
+            ag <- commodities[j]
+            desc = paste0(desc, '<p>', ag,'</p><br/>')
+            #desc = paste0(desc, '<a href="https://google.com">', ag,'</a><br/>')
+        }
+    }
+    basetracts[i,"Description"] = desc
+}
+### deprecated code for going belwo the section level. not viable because Yolo's Site-ID's do't map at all to PLSS intra-section data.
 if (F) {
     for (i in 1:nrow(basetracts)) {
         agfinds = asdf( subset(agreporting, FRSTDIVID_ == basetracts[i,]$FRSTDIVID ) )
@@ -48,18 +63,11 @@ if (F) {
         basetracts[i,"Description"] = desc
     }
 }
-for (i in 1:nrow(basetracts)) {
-    commodities = asdf( subset(agreporting, FRSTDIVID_ == basetracts[i,]$FRSTDIVID ) )[,"Commodity"]
-    commodities = unique( commodities )
-    desc = ""
-    if (length(commodities) > 0) {
-        for (j in 1:length(commodities)) {
-            ag <- commodities[j]
-            desc = paste0(desc, '<a href="https://google.com">', ag,'</a><br/>')
-        }
-    }
-    basetracts[i,"Description"] = desc
-}
+
+# filter out empty sections
+basetracts$exclude = with(basetracts, ifelse( Description == "", TRUE, FALSE  ) )
+basetracts = subset( basetracts, !exclude )
+
 ### when building map, be aware of these limits:
 ###   https://developers.google.com/maps/documentation/javascript/kmllayer#restrictions
 ###   (e.g. not more than 1000 objects)
