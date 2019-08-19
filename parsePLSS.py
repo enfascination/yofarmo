@@ -7,7 +7,7 @@ schema_ogc = Schema("ogckml22.xsd")
 schema_gx = Schema("kml22gx.xsd")
 
 ### load file
-kml_file = path.join( 'westcampusedit.kml')
+kml_file = path.join( 'data/countyDisplay.kml')
 
 with open(kml_file) as f:
     doc = parser.parse(f)
