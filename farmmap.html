@@ -12,26 +12,43 @@
         margin: 0;
         }
       #map {
-       height: 600px;
+       height: 700px;
        width: 800px;
        overflow: hidden;
        float: left;
        border: thin solid #333;
        }
       #capture {
-       height: 600px;
-       width: 100px;
+       height: 700px;
+       width: 150px;
        overflow: hidden;
        float: left;
        background-color: #ECECFB;
        border: thin solid #333;
        border-left: none;
        }
+      #dummy {
+       height: 700px;
+       width: 0px;
+       overflow: hidden;
+       background-color: transparent;
+       border: none;
+       }
     </style>
   </head>
   <body>
+	  <p><h1>What grows in Yolo?</h1></p>
     <div id="map"></div>
     <div id="capture"></div>
+    <div id="dummy"></div>
+	<br/>
+	<section>There is some missing data.  We don't think sprays or GMO are evil.  We think information is good.  We think local trumps organic.  This data exists because of EPA regulations. Made by <a href="enfascination.com">Seth Frey</a>. This <a href="https://github.com/enfascination/yofarmo">code</a> is free to extend to your county.</section>
+
+
+
+
+
+
     <script src="localSettings.js"></script>
     <script>
       var map;
@@ -45,7 +62,7 @@
         map = new google.maps.Map(document.getElementById('map'), {
           mapTypeId: 'terrain',
           center: new google.maps.LatLng( s.lat, s.lon ),
-          zoom: 12,
+          zoom: 14,
         });
 
         var kmlLayer = new google.maps.KmlLayer(src, {
