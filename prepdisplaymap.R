@@ -30,12 +30,9 @@ asamp[ asamp %ni% bsamp ]
 unique( agids[ agids %ni% baseids ] )
 sort( baseids[ startsWith(baseids, "CA210100N0010E0SN") ] )
 
-subset(basetracts, startsWith(SECDIVID, "CA210080N0020E0SN08") )
+subset(basetracts, startsWith(FRSTDIVID, "CA210080N0020E0SN08") )
 as.data.frame( subset(agreporting, startsWith( FRSTDIVID_, "CA210080N0020E0SN08") ) )
 
-CA210080N0020E0SN0070A2
-CA210080N0020E0SN0070A2
-CA210080N0020E0SN007                        
 plot(basetracts[1])
 
 if (F) {
@@ -63,5 +60,8 @@ for (i in 1:nrow(basetracts)) {
     }
     basetracts[i,"Description"] = desc
 }
+### when building map, be aware of these limits:
+###   https://developers.google.com/maps/documentation/javascript/kmllayer#restrictions
+###   (e.g. not more than 1000 objects)
 system("touch data/countyDisplay.kml") # kludge
 write_sf(basetracts, "data/countyDisplay.kml", driver= "kml",  delete_dsn = TRUE)
