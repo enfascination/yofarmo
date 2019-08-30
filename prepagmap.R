@@ -7,6 +7,25 @@ asdf <- as.data.frame
 #> Linking to GEOS 3.6.1, GDAL 2.1.3, PROJ 4.9.3
 basetracts <- st_read("data/countyPrepped.gpkg")
 agreporting <- read_xlsx("data/19\ PERM\ 6-11-19.xlsx")
+excludes <- c(
+	"UNCULTIVATED AG", 
+	"RECREATION AREA", 
+	"RIGHTS OF WAY", 
+	"N-OUTDR PLANTS", 
+	"ORG UNCULTIVATED AG", 
+	"N-GRNHS PLANT", 
+	"COMM. FUMIGATN", 
+	"LANDSCAPE MAIN", 
+	"UNCUL NON-AG", 
+	"N-GRNHS TRANSPL"
+	)
+
+
+
+
+
+
+
 
 baseids <- basetracts$FRSTDIVID
 #baseids <- basetracts$SECDIVID
@@ -39,11 +58,12 @@ plot(basetracts[1])
 for (i in 1:nrow(basetracts)) {
     commodities = asdf( subset(agreporting, FRSTDIVID_ == basetracts[i,]$FRSTDIVID ) )[,"Commodity"]
     commodities = unique( commodities )
+	commodities <- commodities[ commodities %ni% excludes ]
     desc = ""
     if (length(commodities) > 0) {
         for (j in 1:length(commodities)) {
             ag <- commodities[j]
-            desc = paste0(desc, '<p>', ag,'</p><br/>')
+            desc = paste0(desc, '<p>', ag,'</p>')
             #desc = paste0(desc, '<a href="https://google.com">', ag,'</a><br/>')
         }
     }
@@ -65,8 +85,7 @@ if (F) {
 }
 
 # filter out empty sections
-basetracts$exclude = with(basetracts, ifelse( Description == "", TRUE, FALSE  ) )
-basetracts = subset( basetracts, !exclude )
+basetracts = subset( basetracts, Description != "" )
 
 ### when building map, be aware of these limits:
 ###   https://developers.google.com/maps/documentation/javascript/kmllayer#restrictions

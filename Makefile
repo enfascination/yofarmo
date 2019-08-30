@@ -25,7 +25,7 @@ prepfull:
 	rm -rf data/CadRef_v10.gdb
 
 produce:
-	R CMD BATCH prepdisplaymap.R
+	R CMD BATCH prepagmap.R
 	echo "-----------------------------------------------------------------------"
 	echo "this shell kludge because I couldn't figure out how to parse kml in python in a way that is editable and jsonlike"
 	echo "the need is to get rid of nesting in folder, remove piecewise styling, and add css-style global styling"
@@ -33,8 +33,23 @@ produce:
 	head -3 data/countyDisplay.kml > tmp/p1
 	tail +4 data/countyDisplay.kml | grep -ve "<.\?Folder>" > tmp/countyDisplay.kmlp
 	sed -e "s/<Style>.*<\/Style>/<styleUrl>#poly<\/styleUrl>/" tmp/countyDisplay.kmlp > tmp/countyDisplay2.kmlp
-	cat tmp/p1 data/styleSnip.kmlp tmp/countyDisplay2.kmlp > tmp/out.kml
+	cat tmp/p1 styleSnip.kmlp tmp/countyDisplay2.kmlp > tmp/out.kml
 	mv tmp/out.kml data/countyDisplay.kml
 	rm -rf tmp
 	echo "-----------------------------------------------------------------------"
 	zip data/countyDisplay.kmz data/countyDisplay.kml
+
+producespray:
+	R CMD BATCH prepspraymap.R || : 
+	echo "-----------------------------------------------------------------------"
+	echo "this shell kludge because I couldn't figure out how to parse kml in python in a way that is editable and jsonlike"
+	echo "the need is to get rid of nesting in folder, remove piecewise styling, and add css-style global styling"
+	mkdir -p tmp
+	head -3 data/countyDispray.kml > tmp/p1
+	tail +4 data/countyDispray.kml | grep -ve "<.\?Folder>" > tmp/countyDispray.kmlp
+	sed -e "s/<Style>.*<\/Style>/<styleUrl>#poly<\/styleUrl>/" tmp/countyDispray.kmlp > tmp/countyDispray2.kmlp
+	cat tmp/p1 styleSnip.kmlp tmp/countyDispray2.kmlp > tmp/out.kml
+	mv tmp/out.kml data/countyDispray.kml
+	rm -rf tmp
+	echo "-----------------------------------------------------------------------"
+	zip data/countyDispray.kmz data/countyDispray.kml
