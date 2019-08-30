@@ -4,45 +4,175 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>KML Click Capture Sample</title>
+    <title>Yolo Ag Map</title>
     <style>
-      html, body {
-        height: 370px;
-        padding: 0;
-        margin: 0;
+        html {
+            padding: 0;
+            margin: 0;
+           font-family: 'Amatic SC', sans-serif;
+           font-size: 16pt;
+           background: #99ccff;
+           /* from https://amethystwebsitedesign.com/decorative-borders-with-only-css-and-no-images/ */
+            background-image: radial-gradient(#6699ff 10%, transparent 10%),
+            radial-gradient(#6699ff 10%, transparent 10%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
         }
-      #map {
-       height: 700px;
-       width: 800px;
-       overflow: hidden;
-       float: left;
-       border: thin solid #333;
+        body {
+            width: 1070px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        div {
+           font-size: 16pt;
+        }
+       p {
+           margin: 0;
        }
-      #capture {
-       height: 700px;
-       width: 150px;
-       overflow: hidden;
-       float: left;
-       background-color: #ECECFB;
-       border: thin solid #333;
-       border-left: none;
+       h1 { 
+           font-size: 48pt;
+           text-align: center;
+           margin: 0;
        }
-      #dummy {
-       height: 700px;
-       width: 0px;
-       overflow: hidden;
-       background-color: transparent;
-       border: none;
+       h1, h2, h3, h4, h5 { 
+           color: #333399;
        }
+       a, a:visited {
+           color: #333399;
+           text-decoration: none;
+       }
+       .header {
+           color: #333399;
+           margin: 30px;
+       }
+       .sub {
+           text-align: center;
+       }
+
+       .small {
+           font-size: 0.5em;
+       }
+
+       .smaller {
+           font-size: 0.4em;
+       }
+
+        #map {
+            height: 700px;
+            width: 800px;
+            overflow: hidden;
+            float: left;
+            border: thin solid #333;
+        }
+        #capture {
+            height: 690px;
+            width: 240px;
+            overflow: hidden;
+            float: left;
+            padding: 5px 10px;
+            border: thin solid #333;
+            border-left: none;
+            font-size: 18pt;
+            background: #6699ff;
+        }
+        #dummy {
+            height: 700px;
+            width: 0px;
+            overflow: hidden;
+            background-color: transparent;
+            border: none;
+        }
+
+
+
+        /* from https://codepen.io/lbebber/pen/KwGEQv */
+       @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+
+       @keyframes squiggly-anim {
+           0% {
+               filter: url('#squiggly-0');
+           }
+           25% {
+               filter: url('#squiggly-1');
+           }
+           50% {
+               filter: url('#squiggly-2');
+           }
+           75% {
+               filter: url('#squiggly-3');
+           }
+           100% {
+               filter: url('#squiggly-4');
+           }
+       }
+
+       $squiggly {
+           animation: squiggly-anim 0.34s linear infinite;
+       }
+
+       .squiggle {
+           /*@extend $squiggly;*/
+           animation: squiggly-anim 0.34s linear infinite;
+           display: inline-block;
+           width: 100%;
+
+           outline: none;
+           text-align: center;
+       }
+
+
     </style>
   </head>
   <body>
-	  <p><h1>What grows in Yolo?</h1></p>
+  <div class="content">
+  <div class="header">
+        <h1 class="squiggle" contenteditable>What grows in Yolo?</h1>
+	  <p class="sub">
+        (click on a map tile to see what grows there.)
+      </p>
+  </div>
     <div id="map"></div>
-    <div id="capture"></div>
+    <div id="capture"><h3>Produce:</h3></div>
     <div id="dummy"></div>
 	<br/>
-	<section>There is some missing data.  We don't think sprays or GMO are evil.  We think information is good.  We think local trumps organic.  This data exists because of EPA regulations. Made by <a href="enfascination.com">Seth Frey</a>. This <a href="https://github.com/enfascination/yofarmo">code</a> is free to extend to your county.</section>
+	<section>
+        <h2>More info</h2>
+        <p>
+        Made by <a href="enfascination.com">Seth Frey</a>. Local trumps organic. Raw data <a href="https://www.yolocounty.org/general-government/general-government-departments/agriculture-cooperative-extension/agriculture-and-weights-measures/pesticide-use-report-history">provided by Yolo county</a> (including pesticide info) in compliance with EPA. There is some missing data.  Also, finer-scale squares exist if I can match county info on section IDs to official info. This <a href="https://github.com/enfascination/yofarmo">code</a> is freely available, and in principle extensible to other counties.
+        </p>
+    </section>
+</div>
+
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+
+
+        <filter id="squiggly-0">
+        <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
+        <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="squiggly-1">
+        <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="squiggly-2">
+        <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="squiggly-3">
+        <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="squiggly-4">
+        <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        </defs> 
+    </svg>
 
 
 
@@ -60,9 +190,10 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          mapTypeId: 'terrain',
+          mapTypeId: 'hybrid',
           center: new google.maps.LatLng( s.lat, s.lon ),
-          zoom: 14,
+          zoom: 13,
+            gestureHandling: 'greedy',
         });
 
         var kmlLayer = new google.maps.KmlLayer(src, {
@@ -74,7 +205,7 @@
         kmlLayer.addListener('click', function(event) {
           var content = event.featureData.infoWindowHtml;
           var testimonial = document.getElementById('capture');
-          testimonial.innerHTML = content;
+          testimonial.innerHTML = "<h3>Produce:</h3>" + content.toLowerCase();
         });
       }
 
