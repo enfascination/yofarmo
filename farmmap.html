@@ -210,8 +210,16 @@
       }
 
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCssR8inpq24nARHj_AlLlwtQbmH9HMh3U&callback=initMap">
+    <script>
+        // from https://stackoverflow.com/questions/31342359/dynamically-set-googleapi-key
+        function loadScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://maps.googleapis.com/maps/api/js?v=3' +
+                '&key=' + s.key +'&callback=initMap'; //& needed
+            document.body.appendChild(script);
+        }
+        window.onload = loadScript;
     </script>
   </body>
 </html>
