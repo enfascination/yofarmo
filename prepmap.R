@@ -40,12 +40,12 @@ for (i in 1:nrow(basetracts)) {
     if (nrow(farm) > 0) {
         for (j in 1:nrow(farm)) {
 			if (length(farm[j,"spray"][[1]]) > 0 ) {
-				sprays <- paste0( '<ul>', paste0( "<li>", farm[j,"spray"][[1]], " (", farm[j,"sprayid"][[1]], ")</li>", collapse=''),'</ul>' )
+				sprays <- paste0( '<ul class="sprays">', paste0( '<li><a href="https://www.google.com/search?q=',farm[j,"spray"][[1]],'+reg+',farm[j,"sprayid"][[1]],'">', farm[j,"spray"][[1]], "</a></li>", collapse=''),'</ul>' )
 				### connect to this api somehow: https://ofmpub.epa.gov/apex/pesticides/ppls/66551-1
 			} else {
 				sprays <- ""
 			}
-            desc = paste0(desc, '<p>', farm[j,"Commodity"],sprays,'</p>')
+            desc = paste0(desc, '<p class="sprayed">', farm[j,"Commodity"],sprays,'</p>')
             #desc = paste0(desc, '<a href="https://google.com">', ag,'</a><br/>')
         }
     }
@@ -59,7 +59,8 @@ for (i in 1:nrow(basetracts)) {
             ### add commodoties that aren't already listed inthe spray list (spray only includes pesticitdes that are sprayed.  Commoditites includes all registered commoditires.
             if (commodities[j, "Commodity"] %ni% farm[,"Commodity"]) {
                 ag <- commodities[j, "Commodity"]
-                desc_nospray = paste0(desc_nospray, '<p>', ag,'</p>')
+                ### have to use i tag instead of p because classes get stripped from KML Description by google
+                desc_nospray = paste0(desc_nospray, '<i>', ag,'</i>')
                 #desc_nospray = paste0(desc_nospray, '<a href="https://google.com">', ag,'</a><br/>')
             }
         }
@@ -68,6 +69,7 @@ for (i in 1:nrow(basetracts)) {
     ### build description element for visualizatin in gmaps
 	#print( desc )
     basetracts[i,"Description"] = paste0(desc_nospray , desc)
+    #basetracts[i,"Description"] = desc
 }
 
 # filter out empty sections
