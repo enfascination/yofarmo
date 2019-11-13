@@ -2,4 +2,5 @@ var localSettings = {
     "KMLUrlPlss" : "https://example.com/yofarmo.kmz",
     "lat" : 38.56,
     "lon" : -121.75,
+    "key" : "QWERasdf134",
 };
