@@ -25,6 +25,24 @@ prepfull:
 	rm -rf data/CadRef_v10.gdb
 
 produce:
+	R CMD BATCH prepmap.R
+	echo "-----------------------------------------------------------------------"
+	echo "this shell kludge because I couldn't figure out how to parse kml in python in a way that is editable and jsonlike"
+	echo "the need is to get rid of nesting in folder, remove piecewise styling, and add css-style global styling"
+	mkdir -p tmp
+	head -3 data/yoloAgWSpray.kml > tmp/p1
+	tail +4 data/yoloAgWSpray.kml | grep -ve "<.\?Folder>" > tmp/yoloAgWSpray.kmlp
+	sed -e "s/<Style>.*<\/Style>/<styleUrl>#poly<\/styleUrl>/" tmp/yoloAgWSpray.kmlp > tmp/yoloAgWSpray2.kmlp
+	cat tmp/p1 styleSnip.kmlp tmp/yoloAgWSpray2.kmlp > tmp/out.kml
+	mv tmp/out.kml data/yoloAgWSpray.kml
+	rm -rf tmp
+	echo "-----------------------------------------------------------------------"
+	zip data/yoloAgWSpray.kmz data/yoloAgWSpray.kml
+
+ship:
+	scp data/yoloAgWSpray.kmz sethfrey@enfascination.com:~/webapps/lookaroundyou/data/yoloagwspray.kmz
+
+produce_comm_only:
 	R CMD BATCH prepagmap.R
 	echo "-----------------------------------------------------------------------"
 	echo "this shell kludge because I couldn't figure out how to parse kml in python in a way that is editable and jsonlike"
@@ -39,7 +57,7 @@ produce:
 	echo "-----------------------------------------------------------------------"
 	zip data/countyDisplay.kmz data/countyDisplay.kml
 
-producespray:
+produce_spray_only:
 	R CMD BATCH prepspraymap.R || : 
 	echo "-----------------------------------------------------------------------"
 	echo "this shell kludge because I couldn't figure out how to parse kml in python in a way that is editable and jsonlike"
